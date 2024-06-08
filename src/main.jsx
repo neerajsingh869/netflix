@@ -7,7 +7,7 @@ import Browse from './pages/Browse.jsx'
 
 const router = createBrowserRouter([
   {
-    path: "/login",
+    path: "/",
     element: <Login />
   },
   {
