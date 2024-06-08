@@ -16,7 +16,7 @@ const Login = () => {
         src="../src/assets/netflix-bg.jpg"
         alt="Background Banner"
       />
-      <div className="absolute h-screen w-screen">
+      <div className="absolute h-screen w-screen sm:bg-transparent bg-black">
         <div className="bg-black/80 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-16 flex justify-center align-center flex-col rounded-md">
           <p className="text-white text-4xl mb-12 font-bold">{isSignInForm ? "Sign In" : "Sign Up"}</p>
           <form className="w-80 flex flex-col gap-5 mb-12">
