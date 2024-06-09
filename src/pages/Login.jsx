@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import Header from "../components/Header";
 import { validateForm } from "../utils/validateForm";
+import netflixBgBanner from "../assets/netflix-bg.jpg";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -28,7 +29,7 @@ const Login = () => {
       <Header />
       <img
         className="w-screen h-screen object-cover absolute"
-        src="../src/assets/netflix-bg.jpg"
+        src={netflixBgBanner}
         alt="Background Banner"
       />
       <div className="absolute h-screen w-screen sm:bg-transparent bg-black">
