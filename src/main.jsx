@@ -4,6 +4,8 @@ import './index.css'
 import Login from './pages/Login.jsx'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Browse from './pages/Browse.jsx'
+import { Toaster } from 'react-hot-toast';
+import { app } from './configs/firebase.js';
 
 const router = createBrowserRouter([
   {
@@ -19,5 +21,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router} />
+    <Toaster />
   </React.StrictMode>,
 )
