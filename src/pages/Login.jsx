@@ -11,6 +11,8 @@ const Login = () => {
   const passwordRef = useRef(null);
 
   const toggleSignInSignUpForm = () => {
+    setFormErrorMessage(null);
+    
     setIsSignInForm(!isSignInForm);
   }
 
