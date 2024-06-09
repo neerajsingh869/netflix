@@ -1,11 +1,24 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Header from "../components/Header";
+import { validateForm } from "../utils/validateForm";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
+  const [formErrorMessage, setFormErrorMessage] = useState(null);
+
+  const fullNameRef = useRef(null);
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
 
   const toggleSignInSignUpForm = () => {
     setIsSignInForm(!isSignInForm);
+  }
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    const formErrorMsg = validateForm(fullNameRef?.current?.value, emailRef?.current?.value, passwordRef?.current?.value);
+    setFormErrorMessage(formErrorMsg);
   }
   
   return (
@@ -26,6 +39,7 @@ const Login = () => {
                   className="focus:ring focus:ring-white p-3 text-lg outline-none bg-neutral-600 placeholder:text-neutral-400 text-white rounded-md"
                   type="text"
                   placeholder="Full Name"
+                  ref={fullNameRef}
                 />
               )
             }
@@ -33,13 +47,16 @@ const Login = () => {
               className="focus:ring focus:ring-white p-3 text-lg outline-none bg-neutral-600 placeholder:text-neutral-400 text-white rounded-md"
               type="email"
               placeholder="Email"
+              ref={emailRef}
             />
             <input
               className="focus:ring focus:ring-white p-3 text-lg outline-none bg-neutral-600 placeholder:text-neutral-400 text-white rounded-md"
               type="password"
               placeholder="Password"
+              ref={passwordRef}
             />
-            <button className="text-white bg-red-600 text-lg p-3 hover:bg-red-700 rounded-md" type="button">
+            <p className="text-red-700 font-bold text-lg">{formErrorMessage}</p>
+            <button className="text-white bg-red-600 text-lg p-3 hover:bg-red-700 rounded-md" type="button" onClick={handleFormSubmit}>
             {isSignInForm ? "Sign In" : "Sign Up"}
             </button>
           </form>
