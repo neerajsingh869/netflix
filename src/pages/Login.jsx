@@ -8,10 +8,13 @@ import {
 } from "firebase/auth";
 import toast from "react-hot-toast";
 import { auth } from "../configs/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [formErrorMessage, setFormErrorMessage] = useState(null);
+
+  const navigate = useNavigate();
 
   const fullNameRef = useRef(null);
   const emailRef = useRef(null);
@@ -47,6 +50,8 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
+          toast.success("You are successfully logged in.")
+          navigate("/browse");
           // ...
         })
         .catch((error) => {
@@ -64,6 +69,8 @@ const Login = () => {
           // Signed up
           const user = userCredential.user;
           console.log(user);
+          toast.success("You are successfully signed up.");
+          navigate("/browse");
           // ...
         })
         .catch((error) => {
