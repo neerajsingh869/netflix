@@ -5,6 +5,7 @@ import netflixBgBanner from "../assets/netflix-bg.jpg";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import toast from "react-hot-toast";
 import { auth } from "../configs/firebase";
@@ -65,13 +66,21 @@ const Login = () => {
         emailRef.current.value,
         passwordRef.current.value
       )
-        .then((userCredential) => {
-          // Signed up
+        .then(userCredential => {
           const user = userCredential.user;
-          console.log(user);
-          toast.success("You are successfully signed up.");
-          navigate("/browse");
-          // ...
+
+          updateProfile(user, {
+            displayName: fullNameRef.current.value
+          })
+            .then(() => {
+              toast.success("You are successfully signed up.");
+              navigate("/browse");
+            })
+            .catch((error) => {
+              console.log(error);
+              toast.error("This is an error!");
+              // ..
+            });
         })
         .catch((error) => {
           console.log(error);
