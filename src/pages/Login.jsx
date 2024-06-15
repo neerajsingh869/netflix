@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import BeatLoader from "react-spinners/BeatLoader";
 import {
@@ -20,7 +19,6 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [formErrorMessage, setFormErrorMessage] = useState(null);
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const fullNameRef = useRef(null);
@@ -63,7 +61,6 @@ const Login = () => {
           console.log(user);
           setIsLoading(false);
           toast.success("You are successfully logged in.")
-          navigate("/browse");
           // ...
         })
         .catch((error) => {
@@ -89,7 +86,6 @@ const Login = () => {
               dispatch(addUser({uid, email, displayName}));
               setIsLoading(false);
               toast.success("You are successfully signed up.");
-              navigate("/browse");
             })
             .catch((error) => {
               toast.error(error.message);

@@ -1,21 +1,45 @@
-import {useSelector} from "react-redux";
+import { useEffect } from "react";
+import {useDispatch, useSelector} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 import netflixLogo from "../assets/netflix.png";
 import { auth } from "../configs/firebase";
+import { addUser, removeUser } from "../redux/slices/userSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector(state => state.user);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        const {uid, email, displayName} = user;
+        console.log(user);
+        dispatch(addUser({uid, email, displayName}));
+
+        navigate('/browse');
+        // ...
+      } else {
+        // User is signed out
+        // ...
+        dispatch(removeUser());
+
+        navigate('/');
+      }
+    });
+  }, [dispatch, navigate]);
   
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
     signOut(auth).then(() => {
       // Sign-out successful.
-      navigate("/");
       toast.success("You have been successfully logged out.")
     }).catch((error) => {
       // An error happened.
