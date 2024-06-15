@@ -1,18 +1,19 @@
 import { useRef, useState } from "react";
-import Header from "../components/Header";
-import { validateForm } from "../utils/validateForm";
-import netflixBgBanner from "../assets/netflix-bg.jpg";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import BeatLoader from "react-spinners/BeatLoader";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
-} from "firebase/auth";
-import toast from "react-hot-toast";
-import { auth } from "../configs/firebase";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+  } from "firebase/auth";
+
+import Header from "../components/Header";
+import { validateForm } from "../utils/validateForm";
+import netflixBgBanner from "../assets/netflix-bg.jpg";
 import { addUser } from "../redux/slices/userSlice";
-import BeatLoader from "react-spinners/BeatLoader";
+import { auth } from "../configs/firebase";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -66,7 +67,7 @@ const Login = () => {
           // ...
         })
         .catch((error) => {
-          console.log(error);
+          toast.error(error.message);
           setIsLoading(false);
         });
     } else {
@@ -91,15 +92,13 @@ const Login = () => {
               navigate("/browse");
             })
             .catch((error) => {
-              console.log(error);
-              toast.error("This is an error!");
+              toast.error(error.message);
               setIsLoading(false);
               // ..
             });
         })
         .catch((error) => {
-          console.log(error);
-          toast.error("This is an error!");
+          toast.error(error.message);
           setIsLoading(false);
           // ..
         });

@@ -1,9 +1,10 @@
+import {useSelector} from "react-redux";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import { signOut } from "firebase/auth";
+
 import netflixLogo from "../assets/netflix.png";
 import { auth } from "../configs/firebase";
-import { useNavigate } from "react-router-dom";
-import {useSelector} from "react-redux";
-import toast from "react-hot-toast";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const Header = () => {
       toast.success("You have been successfully logged out.")
     }).catch((error) => {
       // An error happened.
-      console.log(error);
+      toast.error(error.message);
     });
   }
 
