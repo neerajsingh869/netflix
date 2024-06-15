@@ -7,6 +7,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import netflixLogo from "../assets/netflix.png";
 import { auth } from "../configs/firebase";
 import { addUser, removeUser } from "../redux/slices/userSlice";
+import { TOAST_LOGOUT_SUCCESS } from "../utils/constants";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ const Header = () => {
 
     signOut(auth).then(() => {
       // Sign-out successful.
-      toast.success("You have been successfully logged out.")
+      toast.success(TOAST_LOGOUT_SUCCESS);
     }).catch((error) => {
       // An error happened.
       toast.error(error.message);

@@ -13,6 +13,7 @@ import { validateForm } from "../utils/validateForm";
 import netflixBgBanner from "../assets/netflix-bg.jpg";
 import { addUser } from "../redux/slices/userSlice";
 import { auth } from "../configs/firebase";
+import { TOAST_LOGIN_SUCCESS, TOAST_SIGNUP_SUCCESS } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -60,7 +61,7 @@ const Login = () => {
           const user = userCredential.user;
           console.log(user);
           setIsLoading(false);
-          toast.success("You are successfully logged in.")
+          toast.success(TOAST_LOGIN_SUCCESS)
           // ...
         })
         .catch((error) => {
@@ -85,7 +86,7 @@ const Login = () => {
               const {uid, email, displayName} = user;
               dispatch(addUser({uid, email, displayName}));
               setIsLoading(false);
-              toast.success("You are successfully signed up.");
+              toast.success(TOAST_SIGNUP_SUCCESS);
             })
             .catch((error) => {
               toast.error(error.message);
