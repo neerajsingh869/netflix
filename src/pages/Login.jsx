@@ -56,10 +56,8 @@ const Login = () => {
         emailRef.current.value,
         passwordRef.current.value
       )
-        .then((userCredential) => {
+        .then(() => {
           // Signed in
-          const user = userCredential.user;
-          console.log(user);
           setIsLoading(false);
           toast.success(TOAST_LOGIN_SUCCESS)
           // ...
