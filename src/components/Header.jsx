@@ -28,7 +28,7 @@ const Header = () => {
       {
         user && 
         <button
-          className="text-white pb-4 bg-red-600 text-md p-3 hover:bg-red-700 rounded-md h-8 flex items-center justify-center"
+          className="text-white pb-4 h-8 bg-red-600 text-md p-3 hover:bg-red-700 rounded-md flex items-center justify-center"
           type="button"
           onClick={handleFormSubmit}
         >

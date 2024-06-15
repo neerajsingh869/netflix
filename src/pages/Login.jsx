@@ -12,9 +12,11 @@ import { auth } from "../configs/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/slices/userSlice";
+import BeatLoader from "react-spinners/BeatLoader";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [formErrorMessage, setFormErrorMessage] = useState(null);
 
   const navigate = useNavigate();
@@ -32,6 +34,7 @@ const Login = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     const formErrorMsg = validateForm(
       fullNameRef?.current?.value,
@@ -40,7 +43,10 @@ const Login = () => {
     );
     setFormErrorMessage(formErrorMsg);
 
-    if (formErrorMsg) return;
+    if (formErrorMsg) {
+      setIsLoading(false);
+      return
+    }
 
     if (isSignInForm) {
       // add logic to sign in user
@@ -54,12 +60,14 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
+          setIsLoading(false);
           toast.success("You are successfully logged in.")
           navigate("/browse");
           // ...
         })
         .catch((error) => {
           console.log(error);
+          setIsLoading(false);
         });
     } else {
       // add logic to sign up user
@@ -78,18 +86,21 @@ const Login = () => {
             .then(() => {
               const {uid, email, displayName} = user;
               dispatch(addUser({uid, email, displayName}));
+              setIsLoading(false);
               toast.success("You are successfully signed up.");
               navigate("/browse");
             })
             .catch((error) => {
               console.log(error);
               toast.error("This is an error!");
+              setIsLoading(false);
               // ..
             });
         })
         .catch((error) => {
           console.log(error);
           toast.error("This is an error!");
+          setIsLoading(false);
           // ..
         });
     }
@@ -135,7 +146,16 @@ const Login = () => {
               type="button"
               onClick={handleFormSubmit}
             >
-              {isSignInForm ? "Sign In" : "Sign Up"}
+              {isLoading ? <BeatLoader
+                              color="white"
+                              margin={4}
+                              size={10}
+                              style={{
+                                display: "flex",
+                                margin: "6px"
+                              }}
+                              className="items-center justify-center"
+                            /> : (isSignInForm ? "Sign In" : "Sign Up")}
             </button>
           </form>
           <div>
