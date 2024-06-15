@@ -10,12 +10,15 @@ import {
 import toast from "react-hot-toast";
 import { auth } from "../configs/firebase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../redux/slices/userSlice";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [formErrorMessage, setFormErrorMessage] = useState(null);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const fullNameRef = useRef(null);
   const emailRef = useRef(null);
@@ -73,6 +76,8 @@ const Login = () => {
             displayName: fullNameRef.current.value
           })
             .then(() => {
+              const {uid, email, displayName} = user;
+              dispatch(addUser({uid, email, displayName}));
               toast.success("You are successfully signed up.");
               navigate("/browse");
             })
