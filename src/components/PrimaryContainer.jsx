@@ -15,7 +15,7 @@ const PrimaryContainer = () => {
   return (
     <div>
       <EntryPageTrailer trailer={trailer} />
-      <EntryPageTrailerDescription /> 
+      <EntryPageTrailerDescription trailerMovie={nowPlayingMovies[0]} /> 
     </div>
   )
 }
