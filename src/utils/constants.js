@@ -13,7 +13,7 @@ export const EMAIL_REGEX =
 
 export const PASSWORD_REGEX = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
-export const options = {
+export const API_OPTIONS = {
   method: 'GET',
   headers: {
     accept: 'application/json',

@@ -1,6 +1,12 @@
+import EntryPageTrailer from "./EntryPageTrailer"
+import EntryPageTrailerDescription from "./EntryPageTrailerDescription"
+
 const PrimaryContainer = () => {
   return (
-    <div>PrimaryContainer</div>
+    <div>
+      <EntryPageTrailer />
+      <EntryPageTrailerDescription /> 
+    </div>
   )
 }
 
