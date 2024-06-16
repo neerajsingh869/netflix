@@ -1,10 +1,12 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { API_OPTIONS } from "../utils/constants";
+import { addTrailer } from "../redux/slices/movieSlice";
 
 const EntryPageTrailer = () => {
-  const {nowPlayingMovies} = useSelector(store => store.movies);
-  
+  const {nowPlayingMovies, trailer} = useSelector(store => store.movies);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if (nowPlayingMovies.length > 0) {
       const fetchMoviePickedTrailer = async () => {
@@ -27,6 +29,7 @@ const EntryPageTrailer = () => {
           }
 
           console.log(mainTrailer);
+          dispatch(addTrailer(mainTrailer));
 
         } catch (error) {
           console.log(error.message);
@@ -35,13 +38,13 @@ const EntryPageTrailer = () => {
   
       fetchMoviePickedTrailer();
     }
-  }, [nowPlayingMovies])
+  }, [nowPlayingMovies, dispatch])
 
   if (nowPlayingMovies.length === 0) return null;
 
   return (
     <div className="w-screen h-screen overflow-hidden relative">
-      <iframe className="w-screen absolute -top-24" style={{height: "calc(100vh + 200px)"}} src="https://www.youtube.com/embed/LEjhY15eCx0?rel=0&controls=0&autoplay=1&mute=1&loop=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe className="w-screen absolute -top-24" style={{height: "calc(100vh + 200px)"}} src={`https://www.youtube.com/embed/${trailer.key}?rel=0&controls=0&autoplay=1&mute=1&loop=1`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
   )
 }
