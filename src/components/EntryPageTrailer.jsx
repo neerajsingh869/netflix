@@ -40,7 +40,7 @@ const EntryPageTrailer = () => {
     }
   }, [nowPlayingMovies, dispatch])
 
-  if (nowPlayingMovies.length === 0) return null;
+  if (nowPlayingMovies.length === 0 || !trailer) return null;
 
   return (
     <div className="w-screen h-screen overflow-hidden relative">
