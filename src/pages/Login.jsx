@@ -8,7 +8,6 @@ import {
   updateProfile,
   } from "firebase/auth";
 
-import Header from "../components/Header";
 import { validateForm } from "../utils/validateForm";
 import netflixBgBanner from "../assets/netflix-bg.jpg";
 import { addUser } from "../redux/slices/userSlice";
@@ -102,7 +101,6 @@ const Login = () => {
 
   return (
     <div className="relative">
-      <Header />
       <img
         className="w-screen h-screen object-cover absolute"
         src={netflixBgBanner}

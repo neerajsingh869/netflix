@@ -7,15 +7,22 @@ import Browse from './pages/Browse.jsx'
 import { Toaster } from 'react-hot-toast';
 import { Provider } from 'react-redux';
 import { store } from './redux/store.js';
+import Header from './components/Header.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login />
-  },
-  {
-    path: "/browse",
-    element: <Browse />
+    element: <Header />,
+    children: [
+      {
+        index: true,
+        element: <Login />
+      },
+      {
+        path: "browse",
+        element: <Browse />
+      }
+    ]
   }
 ])
 
