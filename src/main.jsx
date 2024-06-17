@@ -8,11 +8,13 @@ import { Toaster } from 'react-hot-toast';
 import { Provider } from 'react-redux';
 import { store } from './redux/store.js';
 import Header from './components/Header.jsx';
+import Page404 from './components/Page404.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Header />,
+    errorElement: <Page404 />,
     children: [
       {
         index: true,
