@@ -9,7 +9,7 @@ const CardList = ({title, data}) => {
     <div className="pl-12">
       <h2 className="pt-12 pb-4 text-xl font-bold text-white">{title}</h2>
       <div className="flex overflow-x-scroll">
-        <div className="flex gap-4">
+        <div className="flex gap-2">
           {
             data.map(d => <Card key={d.id} posterPath={d.poster_path} title={d.original_title} />)
           }
