@@ -53,19 +53,32 @@ const Header = () => {
 
   return (
     <>
-      <header className="flex items-center justify-between w-screen absolute xl:px-40 px-0 pr-3 py-2 sm:bg-gradient-to-b sm:from-neutral-900 sm:from-10% z-10">
-        <img className="lg:w-48 w-32" src={netflixLogo} alt="Netflix Logo" />
-        {
-          user && 
-          <button
-            className="text-white pb-4 h-8 bg-red-600 text-md p-3 hover:bg-red-700 rounded-md flex items-center justify-center"
-            type="button"
-            onClick={handleFormSubmit}
-          >
-            Log out
-          </button>
-        }
-      </header>
+      
+
+      {
+        !user ? (
+          <header className="flex items-center justify-between w-screen absolute xl:px-40 px-0 pr-3 py-2 sm:bg-gradient-to-b sm:from-neutral-900 sm:from-10% z-10">
+            <img className="lg:w-48 w-32" src={netflixLogo} alt="Netflix Logo" />
+          </header>
+        ) :
+        (
+          <header className="fixed flex items-center justify-between w-screen xl:px-16 px-0 pr-3 py-0 sm:bg-gradient-to-b sm:from-neutral-900 sm:from-10% bg-neutral-900 z-50">
+            <div className="flex">
+              <img className="w-32 lg:w-36" src={netflixLogo} alt="Netflix Logo" />
+              <button className="text-white pl-10">
+                GPT
+              </button>
+            </div>
+            <button
+              className="text-white pb-4 h-8 bg-red-600 text-md p-3 hover:bg-red-700 rounded-md flex items-center justify-center"
+              type="button"
+              onClick={handleFormSubmit}
+            >
+              Log out
+            </button>
+          </header>
+        )
+      }
       
       <Outlet />
     </>
