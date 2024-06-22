@@ -16,7 +16,6 @@ const useEntryPageTrailer = (nowPlayingMovies) => {
           let response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`, API_OPTIONS);
 
           response = await response.json();
-          console.log(response.results);
 
           const filteredTrailers = response.results.filter(video => video.type === "Trailer");
 
@@ -27,7 +26,6 @@ const useEntryPageTrailer = (nowPlayingMovies) => {
             mainTrailer = filteredTrailers[0];
           }
 
-          console.log(mainTrailer);
           dispatch(addTrailer(mainTrailer));
 
         } catch (error) {

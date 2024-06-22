@@ -13,7 +13,7 @@ const PrimaryContainer = () => {
   if (nowPlayingMovies.length === 0 || !trailer) return null;
 
   return (
-    <div>
+    <div className="bg-neutral-900">
       <EntryPageTrailer trailer={trailer} />
       <EntryPageTrailerDescription trailerMovie={nowPlayingMovies[0]} /> 
     </div>
