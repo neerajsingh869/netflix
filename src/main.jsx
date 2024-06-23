@@ -9,6 +9,9 @@ import { Provider } from 'react-redux';
 import { store } from './redux/store.js';
 import Header from './components/Header.jsx';
 import Page404 from './components/Page404.jsx';
+import Gpt from './pages/Gpt.jsx';
+import PrivateRoute from './components/PrivateRoute.jsx';
+import NonPrivateRoute from './components/NonPrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -18,11 +21,32 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Login />
+        element: (
+          <NonPrivateRoute>
+            <Login />
+          </NonPrivateRoute>
+        )
       },
       {
         path: "browse",
-        element: <Browse />
+        children: [
+          {
+            index: true,
+            element: (
+              <PrivateRoute>
+                <Browse />
+              </PrivateRoute>
+            )
+          },
+          {
+            path: "gpt",
+            element: (
+              <PrivateRoute>
+                <Gpt />
+              </PrivateRoute>
+            )
+          }
+        ]
       }
     ]
   }
