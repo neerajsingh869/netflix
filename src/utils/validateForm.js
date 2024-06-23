@@ -12,4 +12,4 @@ export const validateForm = (fullName, email, password) => {
   if (!isPasswordValid) return "Password is not valid.";
 
   return null;
-}
+};

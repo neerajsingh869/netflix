@@ -2,19 +2,23 @@
 
 import Card from "./Card";
 
-const CardList = ({title, data}) => {
+const CardList = ({ title, data }) => {
   return (
     <div className="pl-12">
       <h2 className="pt-12 pb-4 text-xl font-bold text-white">{title}</h2>
       <div className="flex overflow-x-scroll">
         <div className="flex gap-2">
-          {
-            data.map(d => <Card key={d.id} posterPath={d.poster_path} title={d.original_title} />)
-          }
+          {data.map((d) => (
+            <Card
+              key={d.id}
+              posterPath={d.poster_path}
+              title={d.original_title}
+            />
+          ))}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CardList
+export default CardList;

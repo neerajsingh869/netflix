@@ -6,7 +6,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
-  } from "firebase/auth";
+} from "firebase/auth";
 
 import { validateForm } from "../utils/validateForm";
 import netflixBgBanner from "../assets/netflix-bg.jpg";
@@ -44,7 +44,7 @@ const Login = () => {
 
     if (formErrorMsg) {
       setIsLoading(false);
-      return
+      return;
     }
 
     if (isSignInForm) {
@@ -58,7 +58,7 @@ const Login = () => {
         .then(() => {
           // Signed in
           setIsLoading(false);
-          toast.success(TOAST_LOGIN_SUCCESS)
+          toast.success(TOAST_LOGIN_SUCCESS);
           // ...
         })
         .catch((error) => {
@@ -73,15 +73,15 @@ const Login = () => {
         emailRef.current.value,
         passwordRef.current.value
       )
-        .then(userCredential => {
+        .then((userCredential) => {
           const user = userCredential.user;
 
           updateProfile(user, {
-            displayName: fullNameRef.current.value
+            displayName: fullNameRef.current.value,
           })
             .then(() => {
-              const {uid, email, displayName} = user;
-              dispatch(addUser({uid, email, displayName}));
+              const { uid, email, displayName } = user;
+              dispatch(addUser({ uid, email, displayName }));
               setIsLoading(false);
               toast.success(TOAST_SIGNUP_SUCCESS);
             })
@@ -138,16 +138,22 @@ const Login = () => {
               type="button"
               onClick={handleFormSubmit}
             >
-              {isLoading ? <BeatLoader
-                              color="white"
-                              margin={4}
-                              size={10}
-                              style={{
-                                display: "flex",
-                                margin: "6px"
-                              }}
-                              className="items-center justify-center"
-                            /> : (isSignInForm ? "Sign In" : "Sign Up")}
+              {isLoading ? (
+                <BeatLoader
+                  color="white"
+                  margin={4}
+                  size={10}
+                  style={{
+                    display: "flex",
+                    margin: "6px",
+                  }}
+                  className="items-center justify-center"
+                />
+              ) : isSignInForm ? (
+                "Sign In"
+              ) : (
+                "Sign Up"
+              )}
             </button>
           </form>
           <div>

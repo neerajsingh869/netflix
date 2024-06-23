@@ -1,15 +1,15 @@
 import PrimaryContainer from "../components/PrimaryContainer";
-import useNowPlayingMovies from "../hooks/useNowPlayingMovies"
 import SecondaryContainer from "../components/SecondaryContainer";
-import useTopRatedMovies from "../hooks/useTopRatedMovies";
-import usePopularMovies from "../hooks/usePopularMovies";
-import useUpcomingMovies from "../hooks/useUpcomingMovies";
+import useGetNowPlayingMovies from "../hooks/useGetNowPlayingMovies";
+import useGetTopRatedMovies from "../hooks/useGetTopRatedMovies";
+import useGetPopularMovies from "../hooks/useGetPopularMovies";
+import useGetUpcomingMovies from "../hooks/useGetUpcomingMovies";
 
 const Browse = () => {
-  useNowPlayingMovies();
-  useTopRatedMovies();
-  usePopularMovies();
-  useUpcomingMovies();
+  useGetNowPlayingMovies();
+  useGetTopRatedMovies();
+  useGetPopularMovies();
+  useGetUpcomingMovies();
 
   return (
     <div>

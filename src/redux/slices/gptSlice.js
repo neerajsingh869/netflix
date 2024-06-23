@@ -3,18 +3,18 @@ import { createSlice } from "@reduxjs/toolkit";
 const gptSlice = createSlice({
   name: "gpt",
   initialState: {
-    recommendedMovies: [],
-    recommendedMoviesName: []
+    gptMovies: [],
+    gptMoviesName: [],
   },
   reducers: {
     addRecommendedMovies: (state, action) => {
-      const {recommendedMovies, recommendedMoviesName} = action.payload;
+      const { gptMovies, gptMoviesName } = action.payload;
 
-      state.recommendedMovies = recommendedMovies;
-      state.recommendedMoviesName = recommendedMoviesName;
-    }
-  }
-})
+      state.gptMovies = gptMovies;
+      state.gptMoviesName = gptMoviesName;
+    },
+  },
+});
 
-export const {addRecommendedMovies} = gptSlice.actions;
+export const { addRecommendedMovies } = gptSlice.actions;
 export default gptSlice.reducer;
