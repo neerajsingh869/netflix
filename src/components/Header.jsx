@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 
@@ -53,8 +53,6 @@ const Header = () => {
 
   return (
     <>
-      
-
       {
         !user ? (
           <header className="flex items-center justify-between w-screen absolute xl:px-40 px-0 pr-3 py-2 sm:bg-gradient-to-b sm:from-neutral-900 sm:from-10% z-10">
@@ -64,9 +62,11 @@ const Header = () => {
         (
           <header className="fixed flex items-center justify-between w-screen xl:px-16 px-0 pr-3 py-0 sm:bg-gradient-to-b sm:from-neutral-900 sm:from-10% bg-neutral-900 z-50">
             <div className="flex">
-              <img className="w-32 lg:w-36" src={netflixLogo} alt="Netflix Logo" />
+              <Link to="/browse">
+                <img className="w-32 lg:w-36" src={netflixLogo} alt="Netflix Logo" />
+              </Link>
               <button className="text-white pl-10">
-                GPT
+                <Link to="/browse/gpt">Gpt</Link>
               </button>
             </div>
             <button
