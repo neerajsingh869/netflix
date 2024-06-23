@@ -3,8 +3,6 @@
 import Card from "./Card";
 
 const CardList = ({title, data}) => {
-  console.log(data);
-
   return (
     <div className="pl-12">
       <h2 className="pt-12 pb-4 text-xl font-bold text-white">{title}</h2>

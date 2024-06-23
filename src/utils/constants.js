@@ -22,3 +22,5 @@ export const API_OPTIONS = {
 };
 
 export const  IMG_URL = "https://image.tmdb.org/t/p/w500/";
+
+export const OPENAI_SYSTEM_INSTRUCTION = "You will be provided with statement, and your task is to find best 5 results in comma separated format without any spaces. For example: result1,result2,result3,result4,result5. Notice there is no space between result1 and result2, etc. They are only comma seperated. You need to give result in same format.";
