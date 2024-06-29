@@ -12,9 +12,9 @@ const Browse = () => {
   useGetUpcomingMovies();
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <PrimaryContainer />
-      {/* <SecondaryContainer /> */}
+      <SecondaryContainer />
     </div>
   )
 }
