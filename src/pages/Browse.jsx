@@ -14,7 +14,7 @@ const Browse = () => {
   return (
     <div>
       <PrimaryContainer />
-      <SecondaryContainer />
+      {/* <SecondaryContainer /> */}
     </div>
   )
 }

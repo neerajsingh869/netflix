@@ -13,6 +13,7 @@ import Page404 from "./components/Page404.jsx";
 import Gpt from "./pages/Gpt.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import NonPrivateRoute from "./components/NonPrivateRoute.jsx";
+import { IconContext } from "react-icons/lib";
 
 const router = createBrowserRouter([
   {
@@ -55,9 +56,11 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-      <Toaster />
-    </Provider>
+    <IconContext.Provider value={{ className: "text-sm sm:text-base md:text-xl lg:text-3xl" }}>
+      <Provider store={store}>
+        <RouterProvider router={router} />
+        <Toaster />
+      </Provider>
+    </IconContext.Provider>
   </React.StrictMode>
 );
