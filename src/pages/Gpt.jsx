@@ -1,19 +1,25 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import netflixBgBanner from "../assets/netflix-bg.jpg";
 import openai from "../configs/openai";
 import {
   API_OPTIONS,
   GPT_MODEL,
   OPENAI_SYSTEM_INSTRUCTION,
 } from "../utils/constants";
-import { addRecommendedMovies } from "../redux/slices/gptSlice";
+import { addRecommendedMovies, reset } from "../redux/slices/gptSlice";
+import CardList from "../components/CardList";
 
 const Gpt = () => {
   let searchRef = useRef("");
   const dispatch = useDispatch();
+
+  const { gptMovies, gptMoviesName } = useSelector((store) => store.gpt);
+
+  useEffect(() => {
+    return () => dispatch(reset());
+  }, [dispatch]);
 
   // function to get data for a particular movie from tmdb
   const getTmdbDataForMovie = async (movie) => {
@@ -55,14 +61,17 @@ const Gpt = () => {
         tmdbDataForRecommendatedMovies
       );
 
-      let allRecommendedMovies = tmdbDataForRecommendatedMovies.flat();
-      allRecommendedMovies = allRecommendedMovies.filter(
-        (movie, index) => index < 20
+      tmdbDataForRecommendatedMovies = tmdbDataForRecommendatedMovies.map(
+        (movies) => {
+          movies = movies.filter((movie) => movie?.backdrop_path);
+
+          return movies;
+        }
       );
 
       dispatch(
         addRecommendedMovies({
-          gptMovies: allRecommendedMovies,
+          gptMovies: tmdbDataForRecommendatedMovies,
           gptMoviesName: recommendedMoviesName,
         })
       );
@@ -70,17 +79,12 @@ const Gpt = () => {
       console.log(error);
       toast.error(error.message);
     }
-    // searchRef.current.value = "";
   };
 
   return (
-    <div className="relative">
-      <img
-        className="w-screen h-screen object-cover absolute"
-        src={netflixBgBanner}
-        alt="Background Banner"
-      />
-      <div className="absolute top-40 left-1/2 -translate-x-1/2 bg-black h-20 w-2/5 flex items-center p-6 rounded-lg justify-center">
+    <div>
+      <div className="w-screen h-screen fixed top- -z-10 bg-neutral-900"></div>
+      <div className="fixed z-30 top-28 left-1/2 -translate-x-1/2 bg-black h-20 w-2/5 flex items-center p-6 rounded-lg justify-center">
         <form className="flex gap-6 w-full">
           <input
             ref={searchRef}
@@ -95,6 +99,14 @@ const Gpt = () => {
             Search
           </button>
         </form>
+      </div>
+      <div className="bg-neutral-900 h-64 w-screen fixed z-20"></div>
+      <div className="flex flex-col justify-center relative top-96">
+        <div className="-mt-40 z-10">
+          {gptMoviesName.map((movieName, index) => (
+            <CardList key={index} title={movieName} data={gptMovies[index]} />
+          ))}
+        </div>
       </div>
     </div>
   );

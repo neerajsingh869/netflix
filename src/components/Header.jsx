@@ -60,7 +60,7 @@ const Header = () => {
           <img className="lg:w-48 w-32" src={netflixLogo} alt="Netflix Logo" />
         </header>
       ) : (
-        <header className="fixed flex items-center justify-between w-screen xl:px-16 px-0 pr-3 py-0 sm:bg-gradient-to-b sm:from-neutral-900 sm:from-10% bg-neutral-900 z-50">
+        <header className="fixed top-0 flex items-center justify-between w-screen xl:px-16 px-0 pr-3 py-0 sm:bg-gradient-to-b sm:from-neutral-900 sm:from-10% bg-neutral-900 z-50">
           <div className="flex">
             <Link to="/browse">
               <img

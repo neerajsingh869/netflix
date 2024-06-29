@@ -13,8 +13,12 @@ const gptSlice = createSlice({
       state.gptMovies = gptMovies;
       state.gptMoviesName = gptMoviesName;
     },
+    reset: (state) => {
+      state.gptMovies = [];
+      state.gptMoviesName = [];
+    }
   },
 });
 
-export const { addRecommendedMovies } = gptSlice.actions;
+export const { addRecommendedMovies, reset } = gptSlice.actions;
 export default gptSlice.reducer;
