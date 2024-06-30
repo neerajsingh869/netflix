@@ -1,5 +1,5 @@
 
-![Netflix Clone App](./src/assets/netflix-title.png)
+![Netflix Clone App](./src/assets/readme-title.png)
 
 ## Description
 
