@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { addNowPlayingMovies } from "../redux/slices/movieSlice";
 import { API_OPTIONS } from "../utils/constants";
@@ -8,6 +8,7 @@ import { API_OPTIONS } from "../utils/constants";
 // dispatch an action to update state to store those movies
 const useGetNowPlayingMovies = () => {
   const dispatch = useDispatch();
+  const {nowPlayingMovies} = useSelector(state => state.movies);
 
   useEffect(() => {
     const getNowPlayingMovies = () => {
@@ -22,8 +23,8 @@ const useGetNowPlayingMovies = () => {
         .catch((err) => console.error(err));
     };
 
-    getNowPlayingMovies();
-  }, [dispatch]);
+    (!nowPlayingMovies || nowPlayingMovies.length === 0) && getNowPlayingMovies();
+  }, [nowPlayingMovies, dispatch]);
 };
 
 export default useGetNowPlayingMovies;

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { addTopRatedMovies } from "../redux/slices/movieSlice";
 import { API_OPTIONS } from "../utils/constants";
@@ -8,6 +8,7 @@ import { API_OPTIONS } from "../utils/constants";
 // dispatch an action to update state to store those movies
 const useGetTopRatedMovies = () => {
   const dispatch = useDispatch();
+  const {topRatedMovies} = useSelector(state => state.movies);
 
   useEffect(() => {
     const getNowPlayingMovies = () => {
@@ -22,8 +23,8 @@ const useGetTopRatedMovies = () => {
         .catch((err) => console.error(err));
     };
 
-    getNowPlayingMovies();
-  }, [dispatch]);
+    (!topRatedMovies || topRatedMovies.length === 0) && getNowPlayingMovies();
+  }, [topRatedMovies, dispatch]);
 };
 
 export default useGetTopRatedMovies;
