@@ -1,5 +1,5 @@
 
-# <p align="center">Netflix Clone App</p>
+![](./src/assets/netflix-title.png)
 
 ## Description
 
