@@ -84,16 +84,16 @@ const Gpt = () => {
   return (
     <div>
       <div className="w-screen h-screen fixed top- -z-10 bg-neutral-900"></div>
-      <div className="fixed z-30 top-28 left-1/2 -translate-x-1/2 bg-black h-20 w-2/5 flex items-center p-6 rounded-lg justify-center">
-        <form className="flex gap-6 w-full">
+      <div className="fixed z-30 top-28 left-1/2 -translate-x-1/2 bg-black h-20 w-[90%] sm:w-[70%] md:w-[50%] lg:w-[40%] flex items-center p-2 sm:p-6 rounded-lg justify-center">
+        <form className="flex gap-2 sm:gap-4 md:gap-6 w-full">
           <input
             ref={searchRef}
-            className="w-4/5 p-2 rounded-lg outline-none"
+            className="w-4/5 p-1 sm:p-2 rounded-lg outline-none text-sm sm:text-base"
             type="text"
             placeholder="What would you like to watch today?"
           />
           <button
-            className="text-white bg-red-600 p-2 px-4 rounded-lg grow"
+            className="text-white bg-red-600 p-2 px-4 rounded-lg grow text-sm sm:text-base"
             onClick={onGptSearchResults}
           >
             Search

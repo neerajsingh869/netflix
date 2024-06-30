@@ -69,7 +69,7 @@ const Header = () => {
                 alt="Netflix Logo"
               />
             </Link>
-            <button className="text-white pl-10">
+            <button className="text-white pl-2 sm:pl-5 md:pl-10">
               <Link to="/browse/gpt">Gpt</Link>
             </button>
           </div>
