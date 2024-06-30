@@ -1,10 +1,5 @@
 
-<div style="background-image: linear-gradient(to right, #00dbde 0%, #fc00ff 100%); padding: 20px; text-align: center;">
-  <h1 style="background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
- background-blend-mode: screen; -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; padding: 10px;">
-    Netflix Clone App
-  </h1>
-</div>
+# <p align="center">Netflix Clone App</p>
 
 ## Description
 
