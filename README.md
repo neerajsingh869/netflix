@@ -5,6 +5,9 @@
 
 This project is a Netflix clone app built with Tailwind CSS, React, Redux toolkit, and Firebase, integrating TMDB API for fetching movie and TV show data and OpenAI API for personalized recommendations.
 
+## TODO
+- Project Demo
+- Project Features
 
 ## Libraries & Frameworks Used
 
