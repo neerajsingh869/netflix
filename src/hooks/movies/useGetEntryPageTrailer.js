@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addTrailer } from "../redux/slices/movieSlice";
-import { API_OPTIONS } from "../utils/constants";
+import { addTrailer } from "../../redux/slices/movieSlice";
+import { API_OPTIONS } from "../../utils/constants";
 
 const useGetEntryPageTrailer = (nowPlayingMovies) => {
   const dispatch = useDispatch();

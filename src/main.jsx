@@ -41,6 +41,14 @@ const router = createBrowserRouter([
             ),
           },
           {
+            path: "series",
+            element: (
+              <PrivateRoute>
+                <Browse />
+              </PrivateRoute>
+            ),
+          },
+          {
             path: "gpt",
             element: (
               <PrivateRoute>

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addTopRatedMovies } from "../redux/slices/movieSlice";
-import { API_OPTIONS } from "../utils/constants";
+import { addTopRatedMovies } from "../../redux/slices/movieSlice";
+import { API_OPTIONS } from "../../utils/constants";
 
 // responsible for fetching nowPlayingMovies from TMDB and
 // dispatch an action to update state to store those movies

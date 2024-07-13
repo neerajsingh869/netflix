@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 import EntryPageTrailer from "./EntryPageTrailer";
 import EntryPageTrailerDescription from "./EntryPageTrailerDescription";
-import useGetEntryPageTrailer from "../hooks/useGetEntryPageTrailer";
+import useGetEntryPageTrailer from "../hooks/movies/useGetEntryPageTrailer";
 
 const PrimaryContainer = () => {
   const { nowPlayingMovies, trailer } = useSelector((store) => store.movies);
