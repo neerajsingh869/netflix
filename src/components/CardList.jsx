@@ -29,8 +29,8 @@ const responsive = {
 
 const CardList = ({ title, data }) => {
   return (
-    <div className="pl-12">
-      <h2 className="pt-12 pb-4 text-base sm:text-xl font-bold text-white">
+    <div className="pl-10 sm:pl-12">
+      <h2 className="pt-7 pb-4 text-base sm:text-xl font-bold text-white">
         <div className="inline-block cursor-pointer group/title">
           <div className="inline-block mr-3">{title}</div>
           <div className="text-xs text-blue-400 inline-block align-middle ">
