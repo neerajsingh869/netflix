@@ -73,7 +73,7 @@ const Header = () => {
               <NavLink to="/browse" end className={({isActive}) => isActive ? "text-white font-bold" : ""}>Movies</NavLink>
             </button>
             <button className="text-neutral-200 pl-2 sm:pl-4 md:pl-8 hover:text-neutral-400 transition-colors duration-500">
-              <NavLink to="/browse/gpt" end className={({isActive}) => isActive ? "text-white font-bold" : ""}>TV Shows</NavLink>
+              <NavLink to="/browse/series" end className={({isActive}) => isActive ? "text-white font-bold" : ""}>TV Shows</NavLink>
             </button>
             <button className="text-neutral-200 pl-2 sm:pl-4 md:pl-8 hover:text-neutral-400 transition-colors duration-500">
               <NavLink to="/browse/gpt" end className={({isActive}) => isActive ? "text-white font-bold" : ""}>Gpt</NavLink>

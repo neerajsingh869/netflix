@@ -4,14 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { addUpcomingMovies } from "../../redux/slices/movieSlice";
 import { API_OPTIONS } from "../../utils/constants";
 
-// responsible for fetching nowPlayingMovies from TMDB and
+// responsible for fetching upcomingMovies from TMDB and
 // dispatch an action to update state to store those movies
 const useGetUpcomingMovies = () => {
   const dispatch = useDispatch();
-  const {nowPlayingMovies} = useSelector(state => state.movies);
+  const { upcomingMovies } = useSelector((state) => state.movies);
 
   useEffect(() => {
-    const getNowPlayingMovies = () => {
+    const getUpcomingMovies = () => {
       fetch(
         "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
         API_OPTIONS
@@ -23,8 +23,8 @@ const useGetUpcomingMovies = () => {
         .catch((err) => console.error(err));
     };
 
-    (!nowPlayingMovies || nowPlayingMovies.length === 0) && getNowPlayingMovies();
-  }, [nowPlayingMovies, dispatch]);
+    (!upcomingMovies || upcomingMovies.length === 0) && getUpcomingMovies();
+  }, [upcomingMovies, dispatch]);
 };
 
 export default useGetUpcomingMovies;

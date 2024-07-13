@@ -4,14 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { addPopularMovies } from "../../redux/slices/movieSlice";
 import { API_OPTIONS } from "../../utils/constants";
 
-// responsible for fetching nowPlayingMovies from TMDB and
+// responsible for fetching popularMovies from TMDB and
 // dispatch an action to update state to store those movies
 const useGetPopularMovies = () => {
   const dispatch = useDispatch();
   const {popularMovies} = useSelector(state => state.movies);
 
   useEffect(() => {
-    const getNowPlayingMovies = () => {
+    const getPopularMovies = () => {
       fetch(
         "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
         API_OPTIONS
@@ -23,7 +23,7 @@ const useGetPopularMovies = () => {
         .catch((err) => console.error(err));
     };
 
-    (!popularMovies || popularMovies.length === 0) && getNowPlayingMovies();
+    (!popularMovies || popularMovies.length === 0) && getPopularMovies();
   }, [popularMovies, dispatch]);
 };
 

@@ -4,14 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTopRatedMovies } from "../../redux/slices/movieSlice";
 import { API_OPTIONS } from "../../utils/constants";
 
-// responsible for fetching nowPlayingMovies from TMDB and
+// responsible for fetching topRatedMovies from TMDB and
 // dispatch an action to update state to store those movies
 const useGetTopRatedMovies = () => {
   const dispatch = useDispatch();
   const {topRatedMovies} = useSelector(state => state.movies);
 
   useEffect(() => {
-    const getNowPlayingMovies = () => {
+    const getTopRatedMovies = () => {
       fetch(
         "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
         API_OPTIONS
@@ -23,7 +23,7 @@ const useGetTopRatedMovies = () => {
         .catch((err) => console.error(err));
     };
 
-    (!topRatedMovies || topRatedMovies.length === 0) && getNowPlayingMovies();
+    (!topRatedMovies || topRatedMovies.length === 0) && getTopRatedMovies();
   }, [topRatedMovies, dispatch]);
 };
 
