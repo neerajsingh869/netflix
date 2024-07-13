@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 
@@ -62,15 +62,21 @@ const Header = () => {
       ) : (
         <header className="fixed top-0 flex items-center justify-between w-screen xl:px-16 px-0 pr-3 py-0 sm:bg-gradient-to-b sm:from-neutral-900 sm:from-10% bg-neutral-900 z-50">
           <div className="flex">
-            <Link to="/browse">
+            <NavLink to="/browse">
               <img
                 className="w-32 lg:w-36"
                 src={netflixLogo}
                 alt="Netflix Logo"
               />
-            </Link>
-            <button className="text-white pl-2 sm:pl-5 md:pl-10">
-              <Link to="/browse/gpt">Gpt</Link>
+            </NavLink>
+            <button className="text-neutral-200 pl-2 sm:pl-5 md:pl-10 hover:text-neutral-400 transition-colors duration-500">
+              <NavLink to="/browse" end className={({isActive}) => isActive ? "text-white font-bold" : ""}>Movies</NavLink>
+            </button>
+            <button className="text-neutral-200 pl-2 sm:pl-4 md:pl-8 hover:text-neutral-400 transition-colors duration-500">
+              <NavLink to="/browse/gpt" end className={({isActive}) => isActive ? "text-white font-bold" : ""}>TV Shows</NavLink>
+            </button>
+            <button className="text-neutral-200 pl-2 sm:pl-4 md:pl-8 hover:text-neutral-400 transition-colors duration-500">
+              <NavLink to="/browse/gpt" end className={({isActive}) => isActive ? "text-white font-bold" : ""}>Gpt</NavLink>
             </button>
           </div>
           <button
