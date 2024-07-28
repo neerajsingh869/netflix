@@ -3,12 +3,12 @@ import { IoMdPlay } from "react-icons/io";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 
 const EntryPageTrailerDescription = ({ trailerMovie }) => {
-  const { original_title, overview } = trailerMovie;
+  const { original_title, overview, original_name } = trailerMovie;
 
   return (
     <div className="absolute top-20 sm:top-1/4 w-44 sm:w-60 md:w-72 left-6 lg:left-12 lg:w-1/4 text-white">
       <p className="text-md sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-1 sm:mb-3 lg:mb-6 font-bold">
-        {original_title}
+        {original_title || original_name}
       </p>
       <div className="text-sm sm:text-base md:text-lg line-clamp-2 sm:line-clamp-3">{overview}</div>
       <div className="flex gap-3 lg:gap-6 mt-4">

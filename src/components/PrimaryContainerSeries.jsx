@@ -5,19 +5,19 @@ import EntryPageTrailerDescription from "./EntryPageTrailerDescription";
 import useGetEntryPageTrailerSeries from "../hooks/series/useGetEntryPageTrailerSeries";
 
 const PrimaryContainerSeries = () => {
-  const { topRatedSeries, trailerSeries } = useSelector(
+  const { trailerSeries } = useSelector(
     (store) => store.series
   );
 
   // custom hook to dispatch action to add trailer in series store
-  useGetEntryPageTrailerSeries(topRatedSeries);
+  useGetEntryPageTrailerSeries();
 
-  if (topRatedSeries.length === 0 || !trailerSeries) return null;
+  if (!trailerSeries) return null;
 
   return (
     <div className="bg-neutral-900 relative z-0">
-      <EntryPageTrailer trailer={trailerSeries} />
-      <EntryPageTrailerDescription trailerMovie={topRatedSeries[0]} />
+      <EntryPageTrailer trailer={trailerSeries?.trailer} />
+      <EntryPageTrailerDescription trailerMovie={trailerSeries?.trailerData} />
     </div>
   );
 };

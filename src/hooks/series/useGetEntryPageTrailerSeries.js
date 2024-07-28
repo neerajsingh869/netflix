@@ -4,11 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTrailerSeries } from "../../redux/slices/showSlice";
 import { API_OPTIONS } from "../../utils/constants";
 
-const useGetEntryPageTrailer = (topRatedSeries) => {
+const useGetEntryPageTrailer = () => {
   const dispatch = useDispatch();
-  const { trailerSeries } = useSelector((state) => state.series);
-
-  console.log(trailerSeries);
+  const { trailerSeries, topRatedSeries } = useSelector((state) => state.series);
 
   useEffect(() => {
     if (topRatedSeries.length > 0) {
@@ -24,13 +22,9 @@ const useGetEntryPageTrailer = (topRatedSeries) => {
 
           response = await response.json();
 
-          console.log(response);
-
           const filteredTrailers = response.results.filter(
             (show) => show.type === "Trailer"
           );
-
-          console.log(filteredTrailers);
 
           let mainTrailer;
           if (filteredTrailers) {
@@ -38,9 +32,8 @@ const useGetEntryPageTrailer = (topRatedSeries) => {
           } else {
             mainTrailer = response.results[0];
           }
-          console.log(mainTrailer);
 
-          dispatch(addTrailerSeries(mainTrailer));
+          dispatch(addTrailerSeries({trailer: mainTrailer, trailerData: showPicked}));
         } catch (error) {
           console.log(error.message);
         }

@@ -5,17 +5,17 @@ import EntryPageTrailerDescription from "./EntryPageTrailerDescription";
 import useGetEntryPageTrailer from "../hooks/movies/useGetEntryPageTrailer";
 
 const PrimaryContainer = () => {
-  const { nowPlayingMovies, trailer } = useSelector((store) => store.movies);
+  const { trailer: trailerMovie } = useSelector((store) => store.movies);
 
   // custom hook to dispatch action to add trailer in movies store
-  useGetEntryPageTrailer(nowPlayingMovies);
+  useGetEntryPageTrailer();
 
-  if (nowPlayingMovies.length === 0 || !trailer) return null;
+  if (!trailerMovie) return null;
 
   return (
     <div className="bg-neutral-900 relative z-0">
-      <EntryPageTrailer trailer={trailer} />
-      <EntryPageTrailerDescription trailerMovie={nowPlayingMovies[0]} />
+      <EntryPageTrailer trailer={trailerMovie?.trailer} />
+      <EntryPageTrailerDescription trailerMovie={trailerMovie?.trailerData} />
     </div>
   );
 };

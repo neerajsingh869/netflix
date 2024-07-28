@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTrailer } from "../../redux/slices/movieSlice";
 import { API_OPTIONS } from "../../utils/constants";
 
-const useGetEntryPageTrailer = (nowPlayingMovies) => {
+const useGetEntryPageTrailer = () => {
   const dispatch = useDispatch();
-  const {trailer} = useSelector(state => state.movies);
+  const {trailer, nowPlayingMovies} = useSelector(state => state.movies);
 
   useEffect(() => {
     if (nowPlayingMovies.length > 0) {
@@ -35,7 +35,7 @@ const useGetEntryPageTrailer = (nowPlayingMovies) => {
             mainTrailer = filteredTrailers[0];
           }
 
-          dispatch(addTrailer(mainTrailer));
+          dispatch(addTrailer({trailer: mainTrailer, trailerData: moviePicked}));
         } catch (error) {
           console.log(error.message);
         }
