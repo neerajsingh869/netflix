@@ -13,7 +13,7 @@ const useGetEntryPageTrailer = (topRatedSeries) => {
   useEffect(() => {
     if (topRatedSeries.length > 0) {
       const fetchShowPickedTrailer = async () => {
-        const showPicked = topRatedSeries[0];
+        const showPicked = topRatedSeries.filter(series => series.original_language === "en")[0];
         const showId = showPicked.id;
 
         try {
