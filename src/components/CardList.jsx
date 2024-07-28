@@ -35,12 +35,12 @@ const CardList = ({ title, data }) => {
 
   return (
     <div className="pl-10 sm:pl-12">
-      <h2 className="pt-7 pb-4 text-base sm:text-xl font-bold text-white">
+      <h2 className="pt-4 pb-3 sm:pt-7 sm:pb-4 text-base sm:text-xl font-bold text-white">
         <div className="inline-block cursor-pointer group/title">
           <div className="inline-block mr-3">{title}</div>
           <div className="text-xs text-blue-400 inline-block align-middle" onClick={handleModalVisibility}>
-            <div className="inline-block mr-1 transition duration-500 opacity-0 -translate-x-20 group-hover/title:opacity-100 group-hover/title:translate-x-0 text-sm">Explore All</div>
-            <div className="text-lg inline-block before:content-['>'] transition duration-300 opacity-0 -translate-x-20 group-hover/title:opacity-100 group-hover/title:translate-x-0"></div>
+            <div className="inline-block mr-1 transition duration-500 opacity-0 -translate-x-20 group-hover/title:opacity-100 group-hover/title:translate-x-0 text-xs sm:text-sm">Explore All</div>
+            <div className="text-base sm:text-lg inline-block before:content-['>'] transition duration-300 opacity-0 -translate-x-20 group-hover/title:opacity-100 group-hover/title:translate-x-0"></div>
             {isModalVisible && <ExploreModal title={title} data={data} handleModalVisibility={handleModalVisibility} />}
           </div>
         </div>

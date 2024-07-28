@@ -15,7 +15,7 @@ const PrimaryContainerSeries = () => {
   if (topRatedSeries.length === 0 || !trailerSeries) return null;
 
   return (
-    <div className="bg-neutral-900 relative z-10 sm:z-0">
+    <div className="bg-neutral-900 relative z-0">
       <EntryPageTrailer trailer={trailerSeries} />
       <EntryPageTrailerDescription trailerMovie={topRatedSeries[0]} />
     </div>

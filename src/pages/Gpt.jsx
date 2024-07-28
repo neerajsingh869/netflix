@@ -100,8 +100,8 @@ const Gpt = () => {
           </button>
         </form>
       </div>
-      <div className="bg-neutral-900 h-64 w-screen fixed z-20"></div>
-      <div className="flex flex-col justify-center relative top-96">
+      <div className="bg-neutral-900 h-64 w-screen fixed" style={{zIndex: 5}}></div>
+      <div className="flex flex-col justify-center relative top-96 z-0">
         <div className="-mt-40 z-10 mb-16">
           {gptMoviesName.map((movieName, index) => (
             <CardList key={index} title={movieName} data={gptMovies[index]} />

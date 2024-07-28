@@ -3,7 +3,7 @@
 const EntryPageTrailer = ({ trailer }) => {
   return (
     <div
-      className="w-screen relative top-4 sm:-top-12"
+      className="w-screen relative -top-2 sm:-top-12"
     >
       <iframe
         className="w-screen aspect-video "
