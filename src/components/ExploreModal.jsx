@@ -49,6 +49,22 @@ const ExploreModal = ({ title, data, handleModalVisibility }) => {
         fetchDataViaAPI("https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=");
         break;
       }
+      case "Now Playing Series": {
+        fetchDataViaAPI("https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=");
+        break;
+      }
+      case "Popular Series": {
+        fetchDataViaAPI("https://api.themoviedb.org/3/tv/popular?language=en-US&page=");
+        break;
+      }
+      case "Top Rated Series": {
+        fetchDataViaAPI("https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=");
+        break;
+      }
+      case "Upcoming Series": {
+        fetchDataViaAPI("https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=");
+        break;
+      }
       default:
         return content;
     }
