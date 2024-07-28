@@ -104,7 +104,7 @@ const Gpt = () => {
       <div className="flex flex-col justify-center relative top-96 z-0">
         <div className="-mt-40 z-10 mb-16">
           {gptMoviesName.map((movieName, index) => (
-            <CardList key={index} title={movieName} data={gptMovies[index]} />
+            <CardList key={index} title={movieName} data={gptMovies[index]} gpt={true} />
           ))}
         </div>
       </div>
