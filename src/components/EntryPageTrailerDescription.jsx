@@ -6,7 +6,7 @@ const EntryPageTrailerDescription = ({ trailerMovie }) => {
   const { original_title, overview } = trailerMovie;
 
   return (
-    <div className="absolute top-20 sm:top-1/3 w-40 sm:w-60 md:w-72 left-6 lg:left-12 lg:w-1/4 text-white">
+    <div className="absolute top-20 sm:top-1/4 w-40 sm:w-60 md:w-72 left-6 lg:left-12 lg:w-1/4 text-white">
       <p className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-1 sm:mb-3 lg:mb-6 font-bold">
         {original_title}
       </p>
