@@ -35,11 +35,27 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    const formErrorMsg = validateForm(
-      fullNameRef?.current?.value,
-      emailRef.current.value,
-      passwordRef.current.value
-    );
+    let email = emailRef?.current?.value;
+    let password = passwordRef?.current?.value;
+    let fullName = fullNameRef?.current?.value;
+
+    let formErrorMsg = null;
+    if (isSignInForm) {
+      formErrorMsg = validateForm(
+        null,
+        email,
+        password,
+        true
+      );
+    } else {
+      formErrorMsg = validateForm(
+        fullName,
+        email,
+        password,
+        false
+      );
+    }
+
     setFormErrorMessage(formErrorMsg);
 
     if (formErrorMsg) {
@@ -49,17 +65,15 @@ const Login = () => {
 
     if (isSignInForm) {
       // add logic to sign in user
-
       signInWithEmailAndPassword(
         auth,
-        emailRef.current.value,
-        passwordRef.current.value
+        email,
+        password
       )
         .then(() => {
           // Signed in
           setIsLoading(false);
           toast.success(TOAST_LOGIN_SUCCESS);
-          // ...
         })
         .catch((error) => {
           toast.error(error.message);
@@ -67,17 +81,16 @@ const Login = () => {
         });
     } else {
       // add logic to sign up user
-
       createUserWithEmailAndPassword(
         auth,
-        emailRef.current.value,
-        passwordRef.current.value
+        email,
+        password
       )
         .then((userCredential) => {
           const user = userCredential.user;
 
           updateProfile(user, {
-            displayName: fullNameRef.current.value,
+            displayName: fullName,
           })
             .then(() => {
               const { uid, email, displayName } = user;
@@ -88,13 +101,11 @@ const Login = () => {
             .catch((error) => {
               toast.error(error.message);
               setIsLoading(false);
-              // ..
             });
         })
         .catch((error) => {
           toast.error(error.message);
           setIsLoading(false);
-          // ..
         });
     }
   };
